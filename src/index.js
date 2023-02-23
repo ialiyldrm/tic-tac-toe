@@ -77,7 +77,15 @@ function Square(props) {
           xIsNext: (step % 2) === 0,
         });
     }
-
+    restart(){
+        this.setState({
+            history: [{
+                squares: Array(9).fill(null),
+              }],
+              stepNumber: 0,
+              xIsNext: true,
+        });
+    }
     render() {
         const history = this.state.history;
         const current = history[this.state.stepNumber];
@@ -112,6 +120,7 @@ function Square(props) {
                 <div className="game-info">
                     <div>{status}</div>
                     <ol>{moves}</ol>
+                    <ol><button onClick={() => this.restart()}>Restart</button></ol>
                 </div>
             </div>
         );
